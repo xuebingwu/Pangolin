@@ -8,8 +8,7 @@ Analyze your own sequence here: https://colab.research.google.com/drive/1sxIP4va
 A single sequence, DNA or RNA
 
 ## Output
-
-Predicted splice sits for ACTB pre-mRNA
+A figure and a table of predicted splice sites. See below the output when using ACTB pre-mRNA as input.
 
 ![ACTB-output](./sample-output.png?raw=true "Sample output (ACTB pre-mRNA)")
 
