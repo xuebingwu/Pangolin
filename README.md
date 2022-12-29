@@ -8,5 +8,6 @@ Analyze your own sequence here: https://colab.research.google.com/drive/1sxIP4va
 A single sequence, DNA or RNA
 
 ## Output
+![Alt text](./sample-output.png?raw=true "Title")
 
 
