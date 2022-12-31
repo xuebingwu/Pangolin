@@ -2,7 +2,7 @@
 
 A Google Colab notebook/web server for predicting splice site strength/usage from a single sequence using Pangolin
 
-Analyze your own sequence here: https://colab.research.google.com/drive/1sxIP4vatYbTPMM0JXtxH4DRHHgPhq4MH
+Analyze your own sequence here: https://colab.research.google.com/github/xuebingwu/predict-splice-sites/blob/main/colab.ipynb
 
 ## User interface
 ![interface](./colab-gui.png?raw=true "Colab interface")
