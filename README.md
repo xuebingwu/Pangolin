@@ -13,6 +13,6 @@ A single sequence, DNA or RNA
 ## Output
 A figure and a table of predicted splice sites. See below the output when using ACTB pre-mRNA as input.
 
-![ACTB-output](./sample-output2.png?raw=true "Sample output (ACTB pre-mRNA)")
+![ACTB-output](./sample-output.png?raw=true "Sample output (ACTB pre-mRNA)")
 
 
