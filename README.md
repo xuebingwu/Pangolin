@@ -5,7 +5,7 @@ A Google Colab notebook/web server for predicting splice site strength/usage fro
 Analyze your own sequence here: https://colab.research.google.com/github/xuebingwu/predict-splice-sites/blob/main/colab.ipynb
 
 ## User interface
-![interface](./colab-gui2.png?raw=true "Colab interface")
+![interface](./colab-gui.png?raw=true "Colab interface")
 
 ## Input
 A single sequence, DNA or RNA
