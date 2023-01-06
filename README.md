@@ -1,4 +1,4 @@
-# SplicingLab
+# Splicing^Lab
 
 A Google Colab notebook/web server for predicting tissue-specific splice site usage from a single sequence using Pangolin
 
