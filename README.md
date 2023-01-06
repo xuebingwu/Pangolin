@@ -11,7 +11,7 @@ Analyze your own sequence here: https://colab.research.google.com/github/xuebing
 A single sequence, DNA or RNA
 
 ## Output
-Two figures and a table for predicted sites on both strands. Output files will be zipped and downloaded. See below the output when using ACTB pre-mRNA as input.
+A figure and a table for predicted sites on both strands. Output files will be zipped and downloaded. See below the output when using ACTB pre-mRNA as input.
 
 ![ACTB-output](./sample-output2.png?raw=true "Sample output (ACTB pre-mRNA)")
 
