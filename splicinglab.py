@@ -284,7 +284,7 @@ def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF):
 
 
 
-def predict_splice_sites(seq,model_nums,SCORE_CUTOFF):
+def predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF):
     SEQ_LEN = len(seq)
     print("\n")
     print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Input sequence length =',SEQ_LEN)
@@ -435,7 +435,7 @@ if __name__ == "__main__":
     os.system('rm *.pdf *.txt *.zip')
 
 
-    sites, models = predict_splice_sites(seq,model_nums,SCORE_CUTOFF)
+    sites, models = predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF)
 
     #@title Step 2: Scanning for regulatory elements
     #@markdown Sequences in a sliding window will be set to N and the change in strength of each predicted splice site will be calculated and plotted.
