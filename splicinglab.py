@@ -67,7 +67,7 @@ def one_hot_encode(seq):
     return IN_MAP[seq.astype('int8')]
 
 
-def run_models(seq,models):
+def run_models(seq,models,model_nums):
     '''
     run Pangolin models on an input sequence seq
     
@@ -118,7 +118,7 @@ def mutation_score(models,seq,start_pos,window_length,sites):
         # center on splice site
         seq3  = seq2[(site_pos[i]-1):(site_pos[i]+10000)]
         #print(seq3)
-        scores[i] = run_models(seq3,models)[0][0]
+        scores[i] = run_models(seq3,models,model_nums)[0][0]
     return scores
 
 def filter_predicted_sites(seq,scores,min_score,strand):
@@ -293,7 +293,7 @@ def predict_splice_sites(seq,model_nums,SCORE_CUTOFF):
     models = load_models(model_nums)
 
     print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Scoring sites: + strand')
-    scores = run_models( 5000*'N'+ seq + 5000*'N',models)
+    scores = run_models( 5000*'N'+ seq + 5000*'N',models,model_nums)
 
     print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Filtering sites: + strand')
     sites = filter_predicted_sites(seq,scores,SCORE_CUTOFF,'+')
