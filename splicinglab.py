@@ -214,7 +214,7 @@ def plot_sites(sites,strand,tissues):
   pylab.savefig('predicted_splice_sites'+strand+'.pdf')  
   pylab.show()
 
-def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,SCORE_TYPE,SCORE_CUTOFF,tissues):
+def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,SCORE_TYPE,SCORE_CUTOFF,tissues,model_nums):
   # setup the plot
   pylab.plot()
   pylab.xlim(0,SEQ_LEN)
@@ -309,7 +309,7 @@ def predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF,tissues):
       #print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Plotting sites: + strand\n')
       #plot_sites(sites,'+')
 
-    plot_sites_both_strands(sites,sites,len(seq),SCORE_TYPE,SCORE_CUTOFF,tissues)
+    plot_sites_both_strands(sites,sites,len(seq),SCORE_TYPE,SCORE_CUTOFF,tissues,model_nums)
 
     # print out predicted sites
     if os.path.exists('predicted_splice_sites.txt'):
