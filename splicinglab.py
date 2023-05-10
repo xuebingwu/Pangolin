@@ -351,7 +351,7 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     maxy = np.max(impact_score)
     
     for i in range(len(sites)):
-      pylab.plot(xpos,impact_score[:,i],color=cols[i])
+      pylab.stairs(xpos,impact_score[:,i],color=cols[i])
       pylab.plot(pos[i],maxy,'*',color=cols[i])
     pylab.plot([0,len(seq)],[0,0],color='gray')
     pylab.ylim(miny*1.1,maxy*1.1)
