@@ -284,7 +284,7 @@ def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF,tissues):
 
 
 
-def predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF):
+def predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF,tissues):
     SEQ_LEN = len(seq)
     print("\n")
     print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Input sequence length =',SEQ_LEN)
