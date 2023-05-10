@@ -121,7 +121,7 @@ def mutation_score(models,seq,start_pos,window_length,sites):
         scores[i] = run_models(seq3,models,model_nums)[0][0]
     return scores
 
-def filter_predicted_sites(seq,scores,min_score,strand):
+def filter_predicted_sites(model_nums,seq,scores,min_score,strand):
     # filter sites based on max score across 4 tissues
     # annotate whether a site is 5'SS or 3'SS
     # note that Pangolin does not train 5'SS/3'SS separately
@@ -296,7 +296,7 @@ def predict_splice_sites(seq,model_nums,SCORE_CUTOFF):
     scores = run_models( 5000*'N'+ seq + 5000*'N',models,model_nums)
 
     print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Filtering sites: + strand')
-    sites = filter_predicted_sites(seq,scores,SCORE_CUTOFF,'+')
+    sites = filter_predicted_sites(model_nums,seq,scores,SCORE_CUTOFF,'+')
 
     if len(sites) == 0:
       print(bcolors.BOLD +bcolors.OKBLUE + "No sites found on the + strand with SCORE_CUTOFF = "+str(SCORE_CUTOFF)+bcolors.ENDC)
