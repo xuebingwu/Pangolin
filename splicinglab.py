@@ -170,7 +170,7 @@ def filter_predicted_sites(model_nums,seq,scores,min_score,strand):
     return sites
 
 # plot sites - not used
-def plot_sites(sites,strand):
+def plot_sites(sites,strand,tissues):
   # sites - filtered splice sites
 
   # setup the plot
@@ -214,7 +214,7 @@ def plot_sites(sites,strand):
   pylab.savefig('predicted_splice_sites'+strand+'.pdf')  
   pylab.show()
 
-def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN):
+def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,tissues):
   # setup the plot
   pylab.plot()
   pylab.xlim(0,SEQ_LEN)
@@ -261,7 +261,7 @@ def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN):
   pylab.close()
   #pylab.show()
 
-def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF):
+def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF,tissues):
   # text/table output
   if strand == '+':
     outf = open("predicted_splice_sites.txt",'w')
@@ -304,12 +304,12 @@ def predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF):
       print(bcolors.BOLD +bcolors.OKBLUE + str(len(sites)) + " splice sites found on the + strand with SCORE_CUTOFF = "+str(SCORE_CUTOFF)+bcolors.ENDC)
       # write sites to a file
       print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Saving to file: + strand')
-      site_table(sites,'+',SCORE_TYPE,SCORE_CUTOFF)
+      site_table(sites,'+',SCORE_TYPE,SCORE_CUTOFF,tissues)
 
       #print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Plotting sites: + strand\n')
       #plot_sites(sites,'+')
 
-    plot_sites_both_strands(sites,sites,len(seq))
+    plot_sites_both_strands(sites,sites,len(seq),tissues)
 
     # print out predicted sites
     if os.path.exists('predicted_splice_sites.txt'):
