@@ -258,7 +258,7 @@ def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,SCORE_TYPE,SCORE_CUTOFF,tiss
 
   # save as pdf
   pylab.savefig('predicted_splice_sites.pdf') 
-  pylab.close()
+  #pylab.close()
   #pylab.show()
 
 def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF,tissues):
@@ -340,7 +340,7 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     np.savetxt("impact_score.txt",impact_score, delimiter="\t")
 
     ## consider plotting as sequence logo. score for center bases
-
+    
     pylab.rcParams['pdf.fonttype']=42
     pylab.rcParams['font.size']=12
     pylab.rcParams['figure.figsize'] = [max(10,len(seq)/20), 8]
