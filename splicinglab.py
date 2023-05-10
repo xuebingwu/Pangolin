@@ -347,8 +347,8 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
 
     cols = 'bgrcmyk'*10
     pos = list(sites.keys())
-    miny = np.min(impact_score)
-    maxy = np.max(impact_score)
+    miny = np.min(impact_score[:,1:])
+    maxy = np.max(impact_score[:,1:])
     
     for i in range(len(sites)):
       pylab.plot(xpos,impact_score[:,i+1],color=cols[i])
