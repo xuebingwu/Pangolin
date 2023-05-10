@@ -330,11 +330,12 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     print("\n")
     print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Mutational scaning')
 
-    impact_score = np.zeros( (min(len(seq), int(len(seq)/Step_size)+1 ),len(sites)  )     )
-
+    impact_score = np.zeros( (min(len(seq), int(len(seq)/Step_size)+1 ),len(sites)+1  )     )
+    xpos = np.array(range(0,len(seq),Step_size))+ int(Window_size/2) # center of the window
+    impact_score[,0] = xpos
     for i in range(0,len(seq),Step_size):
         print(i,'\r',end='')
-        impact_score[int(i/Step_size),] = score0 - mutation_score(model_nums,models,seq,i,Window_size,sites)  
+        impact_score[int(i/Step_size),1:] = score0 - mutation_score(model_nums,models,seq,i,Window_size,sites)  
 
     np.savetxt("impact_score.txt",impact_score, delimiter="\t")
 
@@ -348,7 +349,7 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     pos = list(sites.keys())
     miny = np.min(impact_score)
     maxy = np.max(impact_score)
-    xpos = np.array(range(0,len(seq),Step_size))+ int(Window_size/2) # center of the window
+    
     for i in range(len(sites)):
       pylab.plot(xpos,impact_score[:,i],color=cols[i])
       pylab.plot(pos[i],maxy,'*',color=cols[i])
