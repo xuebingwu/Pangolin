@@ -162,8 +162,8 @@ def filter_predicted_sites(model_nums,seq,scores,min_score,strand):
                 sites[i+1] = sites[i+1][:10].lower()+sites[i+1][10:].upper()
                 sites[i+1] = sites[i+1] + "\t3'SS"
             elif seq[i+1:i+3] == 'GT' and seq[i-2:i] == 'AG':
-                # very rarely, has both GT and AG
-                sites[i+1] = sites[i+1] + '\tUndetermined'
+                # very rarely, has both GT and AG. Treat it as 3'SS(likely)
+                sites[i+1] = sites[i+1] + "\t3'SS(likely)"
             else:
                 # very rarely, no GT or AG
                 sites[i+1] = sites[i+1] + '\tNoncanonical'
@@ -183,7 +183,7 @@ def plot_sites(sites,strand,tissues):
   pylab.xlabel('Position')
 
   # legend/text for site type
-  colors = {"5'SS":'red',"3'SS":'blue',"Undetermined":'green',"Noncanonical":'gray'}
+  colors = {"5'SS":'red',"3'SS":'blue',"3'SS(likely)":'green',"Noncanonical":'gray'}
   pylab.text(SEQ_LEN/40,1.1, "5'SS", color='red')
   pylab.text(SEQ_LEN/40,1.0,  "3'SS", color='blue')
 
@@ -213,7 +213,7 @@ def plot_sites(sites,strand,tissues):
 
   # save as pdf
   pylab.savefig('predicted_splice_sites'+strand+'.pdf')  
-  pylab.show()
+  #pylab.show()
 
 def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,SCORE_TYPE,SCORE_CUTOFF,tissues,model_nums):
   # setup the plot
@@ -226,7 +226,7 @@ def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,SCORE_TYPE,SCORE_CUTOFF,tiss
   pylab.xlabel('Position')
 
   # legend/text for site type
-  colors = {"5'SS":'red',"3'SS":'blue',"Undetermined":'green',"Noncanonical":'gray'}
+  colors = {"5'SS":'red',"3'SS":'blue',"3'SS(likely)":'green',"Noncanonical":'gray'}
   pylab.text(SEQ_LEN/40,-1.1, "5'SS", color='red')
   pylab.text(SEQ_LEN/40,-1.25,  "3'SS", color='blue')
 
@@ -273,7 +273,7 @@ def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF,tissues):
     outf.write("#1 - Position: site position in the sequence\n")
     outf.write("#2 - Sequence: 20-nt junction sequence. Intron-lower case; Exon-upper case\n")
     outf.write("#3 - Strand: strand of the site\n")
-    outf.write("#4 - Type: 5' splice site (5'SS), 3' splice site (3'SS), or Undetermined, or Noncanonical\n")
+    outf.write("#4 - Type: 5' splice site (5'SS), 3' splice site (3'SS), or 3'SS(likely), or Noncanonical\n")
     outf.write("#5-8 - Scores: site usage or P(splice) in each tissue\n\n")
     outf.write('\t'.join(['Position','Sequence','Strand','Type'])+'\t'+'\t'.join(tissues)+'\n')
     for pos in sites:
