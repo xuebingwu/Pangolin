@@ -8,7 +8,7 @@ import matplotlib.lines as mlines
 import datetime
 import re
 from pkg_resources import resource_filename
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 
 class bcolors:
     HEADER = '\033[95m'
@@ -217,7 +217,7 @@ def plot_sites(sites,strand,tissues):
 
 def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN,SCORE_TYPE,SCORE_CUTOFF,tissues,model_nums):
   # setup the plot
-  pylab.rcParams['figure.figsize'] = [12, 8]
+  pylab.rcParams['figure.figsize'] = [8, 4]
   pylab.plot()
   pylab.xlim(0,SEQ_LEN)
   pylab.ylim(-1.3,1.3)
