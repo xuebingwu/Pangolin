@@ -334,7 +334,7 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     xpos = np.array(range(0,len(seq),Step_size))+ int(Window_size/2) # center of the window
     impact_score[:,0] = xpos
     for i in range(0,len(seq),Step_size):
-        print(i)
+        print(str(int(100*i/len(seq))+'% competed')
         impact_score[int(i/Step_size),1:] = score0 - mutation_score(model_nums,models,seq,i,Window_size,sites)  
 
     np.savetxt("impact_score.txt",impact_score, delimiter="\t")
