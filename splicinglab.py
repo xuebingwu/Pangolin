@@ -261,7 +261,7 @@ def plot_sites_both_strands(sites_p,sites_m,SEQ_LEN):
   pylab.close()
   #pylab.show()
 
-def site_table(sites,strand):
+def site_table(sites,strand,SCORE_TYPE,SCORE_CUTOFF):
   # text/table output
   if strand == '+':
     outf = open("predicted_splice_sites.txt",'w')
@@ -304,7 +304,7 @@ def predict_splice_sites(seq,model_nums,SCORE_CUTOFF):
       print(bcolors.BOLD +bcolors.OKBLUE + str(len(sites)) + " splice sites found on the + strand with SCORE_CUTOFF = "+str(SCORE_CUTOFF)+bcolors.ENDC)
       # write sites to a file
       print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Saving to file: + strand')
-      site_table(sites,'+')
+      site_table(sites,'+',SCORE_TYPE,SCORE_CUTOFF)
 
       #print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+': Plotting sites: + strand\n')
       #plot_sites(sites,'+')
