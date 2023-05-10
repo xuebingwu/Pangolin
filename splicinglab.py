@@ -103,7 +103,7 @@ def mutate_a_window(seq,start_pos,window_length):
       seq2 = seq2[:len(seq)]
     return seq2
 
-def mutation_score(models,seq,start_pos,window_length,sites):
+def mutation_score(model_nums,models,seq,start_pos,window_length,sites):
     # wt score0
     # sites: a dict, key = pos + 1
     # mutate the wt seq
@@ -320,7 +320,7 @@ def predict_splice_sites(seq,model_nums,SCORE_TYPE,SCORE_CUTOFF,tissues):
     return sites, models
 
 
-def mutational_scan(seq,sites,models,Window_size,Step_size):
+def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     # wt score
     score0 = []
     for pos in sites:
@@ -334,7 +334,7 @@ def mutational_scan(seq,sites,models,Window_size,Step_size):
 
     for i in range(0,len(seq),Step_size):
         print(i,'\r',end='')
-        impact_score[int(i/Step_size),] = score0 - mutation_score(models,seq,i,Window_size,sites)  
+        impact_score[int(i/Step_size),] = score0 - mutation_score(model_nums,models,seq,i,Window_size,sites)  
 
     np.savetxt("impact_score.txt",impact_score, delimiter="\t")
 
