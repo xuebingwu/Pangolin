@@ -8,6 +8,7 @@ import matplotlib.lines as mlines
 import datetime
 import re
 from pkg_resources import resource_filename
+from tqdm import tqdm
 
 class bcolors:
     HEADER = '\033[95m'
@@ -333,8 +334,8 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     impact_score = np.zeros( (min(len(seq), int(len(seq)/Step_size)+1 ),len(sites)+1  )     )
     xpos = np.array(range(0,len(seq),Step_size))+ int(Window_size/2) # center of the window
     impact_score[:,0] = xpos
-    for i in range(0,len(seq),Step_size):
-        print(i,' / ',len(seq))
+    for i in tqdm(range(0,len(seq),Step_size)):
+        #print(i,' / ',len(seq))
         impact_score[int(i/Step_size),1:] = score0 - mutation_score(model_nums,models,seq,i,Window_size,sites)  
 
     np.savetxt("impact_score.txt",impact_score, delimiter="\t")
