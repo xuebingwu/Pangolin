@@ -332,7 +332,7 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
 
     impact_score = np.zeros( (min(len(seq), int(len(seq)/Step_size)+1 ),len(sites)+1  )     )
     xpos = np.array(range(0,len(seq),Step_size))+ int(Window_size/2) # center of the window
-    impact_score[,0] = xpos
+    impact_score[:,0] = xpos
     for i in range(0,len(seq),Step_size):
         print(i,'\r',end='')
         impact_score[int(i/Step_size),1:] = score0 - mutation_score(model_nums,models,seq,i,Window_size,sites)  
