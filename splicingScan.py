@@ -8,6 +8,7 @@ import matplotlib.lines as mlines
 import datetime
 import re
 from pkg_resources import resource_filename
+from tqdm.notebook import tqdm 
 
 class bcolors:
     HEADER = '\033[95m'
@@ -448,7 +449,6 @@ if __name__ == "__main__":
     Window_size = 26 #@param {type:"slider", min:1, max:100, step:1}
 
     Step_size = 10 #@param {type:"slider", min:1, max:100, step:1}
-    
     
     from tqdm import tqdm
 
