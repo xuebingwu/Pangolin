@@ -40,7 +40,7 @@ def load_models(model_nums):
                 model.cuda()
                 weights = torch.load(resource_filename("pangolin","models/final.%s.%s.3" % (j, i)))
             else:
-                print("GPU not available!!")
+                #print("GPU not available!!")
                 weights = torch.load(resource_filename("pangolin","models/final.%s.%s.3" % (j, i)),
                                      map_location=torch.device('cpu'))
             model.load_state_dict(weights)
