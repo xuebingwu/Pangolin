@@ -2,6 +2,13 @@
 
 # scripts from custom_usage.py from the Pangolin package
 
+notebook=True
+
+if notebook:
+    from tqdm.notebook import tqdm
+else:
+    from tqdm import tqdm
+
 import os
 from matplotlib import pylab
 import matplotlib.lines as mlines
@@ -456,8 +463,6 @@ if __name__ == "__main__":
 
     Step_size = 100 #@param {type:"slider", min:1, max:100, step:1}
     
-    from tqdm import tqdm
-
     tissue_for_scan = 'Brain'
     models_scan = load_models([tissue2model_num[tissue_for_scan]])
     mutational_scan(seq,sites,[tissue2model_num[tissue_for_scan]],models_scan,Window_size,Step_size)
