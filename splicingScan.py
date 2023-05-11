@@ -373,7 +373,12 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
 
     pylab.savefig('mutational_scan.pdf')  
     #pylab.show()
-
+    
+    # print out the list with strong effect, change > 0.05
+    print("Putative elements (40-nt centered on the element)")
+    for i in range(len(pos)):
+        if np.max(impact_score[i,1:]) > 0.05 or np.min(impact_score[i,1:]) < -0.05:
+            print('\t'.join([str(pos[i]),seq[(pos[i]-20):(pos[i]+20)]]))
     
 if __name__ == "__main__":
 
