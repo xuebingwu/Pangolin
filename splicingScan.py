@@ -351,10 +351,11 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
 
     ## consider plotting as sequence logo. score for center bases
     
-    pylab.figure()
+    
     pylab.rcParams['pdf.fonttype']=42
     pylab.rcParams['font.size']=12
     pylab.rcParams['figure.figsize'] = [max(10,len(seq)/20), 8]
+    pylab.figure()
 
     cols = 'bgrcmyk'*10
     pos = list(sites.keys())
