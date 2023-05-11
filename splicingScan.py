@@ -354,7 +354,7 @@ def mutational_scan(seq,sites,model_nums,models,Window_size,Step_size):
     
     pylab.rcParams['pdf.fonttype']=42
     pylab.rcParams['font.size']=12
-    pylab.rcParams['figure.figsize'] = [min(500,max(10,len(seq)/20/Step_size)), 8]
+    pylab.rcParams['figure.figsize'] = [min(100,max(10,len(seq)/20/Step_size)), 8]
     pylab.figure()
 
     cols = 'bgrcmyk'*10
